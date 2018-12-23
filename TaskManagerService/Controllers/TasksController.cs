@@ -17,9 +17,10 @@ namespace TaskManagerService.Controllers
         private readonly TaskManager _taskManager = new TaskManager();
 
         // GET: api/Tasks
-        public IEnumerable<ITask> GetTasks()
+        public IEnumerable<Task> GetTasks()
         {
-            return _taskManager.GetAllTasks().ToList();
+            var result =  _taskManager.GetAllTasks();
+            return result.Select(x => (Task)x);
         }
 
         // GET: api/Tasks/5
