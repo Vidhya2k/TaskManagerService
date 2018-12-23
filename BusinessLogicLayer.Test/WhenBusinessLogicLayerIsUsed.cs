@@ -86,6 +86,5 @@ namespace BusinessLogicLayer.Test
 
             _mockTaskDataAccess.Verify(x => x.UpdateTask(taskId, mockTask.Object), Times.Once());
         }
-
     }
 }
