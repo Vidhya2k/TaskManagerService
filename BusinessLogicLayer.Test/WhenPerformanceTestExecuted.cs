@@ -37,5 +37,13 @@ namespace BusinessLogicLayer.Test
             _taskManager.GetAllTasks();
             _parseThroughput.Increment();
         }
+
+        [PerfCleanup]
+        public void Cleanup()
+        {
+            _taskDataAccess = null;
+            _taskManager = null;
+            _parseThroughput = null;
+        }
     }
 }
