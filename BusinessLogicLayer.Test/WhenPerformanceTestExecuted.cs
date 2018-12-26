@@ -38,6 +38,16 @@ namespace BusinessLogicLayer.Test
             _parseThroughput.Increment();
         }
 
+        [PerfBenchmark(NumberOfIterations = 500, RunMode = RunMode.Throughput,
+      TestMode = TestMode.Test, SkipWarmups = true)]
+        [CounterMeasurement("Test")]
+        [ElapsedTimeAssertion(MaxTimeMilliseconds = 500)]
+        public void BenchMarkTestForGetAllTasksFor500Iterations(BenchmarkContext context)
+        {
+            _taskManager.GetAllTasks();
+            _parseThroughput.Increment();
+        }
+
         [PerfCleanup]
         public void Cleanup()
         {
